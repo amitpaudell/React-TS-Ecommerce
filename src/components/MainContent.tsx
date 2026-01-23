@@ -87,24 +87,33 @@ const MainContent = () => {
       setCurrentPage(page);
     }
   };
+
   const getPaginationButtons = () => {
     const buttons: number[] = [];
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, currentPage + 2);
-
-    if (currentPage - 2 < 1) {
-      endPage = Math.min(totalPages, endPage + (2 - currentPage - 1));
-    }
-
-    if (currentPage + 2 > totalPages) {
-      startPage = Math.min(1, startPage - (2 - totalPages - currentPage));
-    }
-
-    for (let page = startPage; page <= endPage; page++) {
+    for (let page = 1; page <= 9; page++) {
       buttons.push(page);
     }
     return buttons;
   };
+
+  // const getPaginationButtons = () => {
+  //   const buttons: number[] = [];
+  //   let startPage = Math.max(1, currentPage - 2);
+  //   let endPage = Math.min(totalPages, currentPage + 2);
+
+  //   if (currentPage - 2 < 1) {
+  //     endPage = Math.min(totalPages, endPage + (2 - currentPage - 1));
+  //   }
+
+  //   if (currentPage + 2 > totalPages) {
+  //     startPage = Math.min(1, startPage - (2 - totalPages - currentPage));
+  //   }
+
+  //   for (let page = startPage; page <= endPage; page++) {
+  //     buttons.push(page);
+  //   }
+  //   return buttons;
+  // };
 
   return (
     <div className="rounded w-full flex justify-between flex-wrap">
