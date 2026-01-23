@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useFilter } from './FilterContext';
 import { Divide, Tally3 } from 'lucide-react';
 import axios from 'axios';
+import BookCard from './BookCard';
 
 const MainContent = () => {
   const { searchQuery, selectedCategory, minPrice, maxPrice, keyword } =
@@ -10,7 +11,7 @@ const MainContent = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [filter, setFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const [dropdownOpen, setDropDown] = useState(true);
+  const [dropdownOpen, setDropDown] = useState(false);
   const itemsPerPage = 12;
 
   useEffect(() => {
@@ -122,7 +123,15 @@ const MainContent = () => {
           </div>
 
           <div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 gap-5">
-            {/* BookCard */}
+            {filteredProduct.map((product) => (
+              <BookCard
+                key={product.id}
+                id={product.id}
+                title={product.title}
+                image={product.thumbnail}
+                price={product.price}
+              ></BookCard>
+            ))}
           </div>
         </div>
       </section>
